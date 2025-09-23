@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:master_demo_app/env.dart';
 import '../Models/models.dart';
+import '../Api/hooks/open_ai.dart';
 
 class ContentPage extends StatefulWidget {
   final List<ContentItem> content;
   final bool scrollable;
+  final String languageCode;
 
-  const ContentPage({super.key, required this.content, this.scrollable = true});
+  const ContentPage({super.key, required this.content, this.scrollable = true, this.languageCode = 'en'});
 
   @override
   State<ContentPage> createState() => _ContentPageState();
@@ -13,6 +16,13 @@ class ContentPage extends StatefulWidget {
 
 class _ContentPageState extends State<ContentPage> {
   String? droppedValue; // For interactive blocks
+  late OpenAIService openAIService;
+
+  @override
+  void initState() {
+    super.initState();
+    openAIService = OpenAIService(OPEN_AI_KEY);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,22 +51,40 @@ class _ContentPageState extends State<ContentPage> {
       case 'interactive_heading':
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Text(
-            item.text ?? '',
-            style: TextStyle(
-              fontSize: (item.style?.fontSize ?? 22).toDouble(),
-              color: item.style?.color != null
-                  ? Color(int.parse(item.style!.color!.substring(1), radix: 16) + 0xFF000000)
-                  : Colors.black,
-              fontWeight: item.style?.bold == true ? FontWeight.bold : FontWeight.normal,
-            ),
+          child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text(
+                item.text ?? '',
+                style: TextStyle(
+                  fontSize: (item.style?.fontSize ?? 22).toDouble(),
+                  color: item.style?.color != null
+                      ? Color(int.parse(item.style!.color!.substring(1), radix: 16) + 0xFF000000)
+                      : Colors.black,
+                  fontWeight: item.style?.bold == true ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.volume_up, size: 18),
+                onPressed: () => openAIService.speakText(item.text ?? '', widget.languageCode),
+              ),
+            ],
           ),
         );
 
       case 'paragraph':
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 6),
-          child: Text(item.text ?? '', style: const TextStyle(fontSize: 16)),
+          child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text(item.text ?? '', style: const TextStyle(fontSize: 16)),
+              IconButton(
+                icon: const Icon(Icons.volume_up, size: 18),
+                onPressed: () => openAIService.speakText(item.text ?? '', widget.languageCode),
+              ),
+            ],
+          ),
         );
 
       case 'list':
@@ -64,7 +92,16 @@ class _ContentPageState extends State<ContentPage> {
           padding: const EdgeInsets.symmetric(vertical: 6),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: (item.items ?? []).map((i) => Text("• $i", style: const TextStyle(fontSize: 16))).toList(),
+            children: [
+              ...(item.items ?? []).map((i) => Text("• $i", style: const TextStyle(fontSize: 16))).toList(),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  icon: const Icon(Icons.volume_up, size: 18),
+                  onPressed: () => openAIService.speakText((item.items ?? []).join('. '), widget.languageCode),
+                ),
+              ),
+            ],
           ),
         );
 
@@ -74,7 +111,19 @@ class _ContentPageState extends State<ContentPage> {
           margin: const EdgeInsets.symmetric(vertical: 6),
           padding: const EdgeInsets.all(12),
           color: Colors.grey.shade200,
-          child: Text(item.text ?? '', style: const TextStyle(fontFamily: 'monospace')),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(item.text ?? '', style: const TextStyle(fontFamily: 'monospace')),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  icon: const Icon(Icons.volume_up, size: 18),
+                  onPressed: () => openAIService.speakText(item.text ?? '', widget.languageCode),
+                ),
+              ),
+            ],
+          ),
         );
 
       case 'interactive_blocks':

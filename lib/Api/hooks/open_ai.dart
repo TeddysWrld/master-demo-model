@@ -67,7 +67,13 @@ $code
   /// Speak text out loud in a given language
   Future<void> speakText(String text, String languageCode) async {
     await _flutterTts.setLanguage(languageCode); // e.g., "fr-FR", "zu-ZA"
+    await _flutterTts.setSpeechRate(0.5);
+    await _flutterTts.setVoice({"name": "af-ZA-x-afr-local", "locale": "af-ZA"});
     await _flutterTts.speak(text);
+  }
+
+   Future<void> stop() async {
+    await _flutterTts.stop();
   }
 
   /// Internal helper to call OpenAI API

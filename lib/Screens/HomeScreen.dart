@@ -11,7 +11,7 @@ import 'IDEenvironement.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HomeScreen extends StatefulWidget {
-	const HomeScreen({Key? key, this.title = 'Welcome back Lindi Mokele'}) : super(key: key);
+	const HomeScreen({Key? key, this.title = 'Masters Demo Model'}) : super(key: key);
 	final String title;
 
 	@override
@@ -26,6 +26,8 @@ late OpenAIService openai;
 	List<Chapter> chapters = [];
 	int? selectedChapterIndex;
   String selectedLanguage = 'English';
+  String selectedLanguageCode = 'en'; // New variable for language code
+  
   final List<String> southAfricanLanguages = [
     'English',
     'Afrikaans',
@@ -40,13 +42,28 @@ late OpenAIService openai;
     'isiNdebele',
   ];
 
+  // Map of language names to their language codes
+  final Map<String, String> languageCodes = {
+    'English': 'en',
+    'Afrikaans': 'af',
+    'isiZulu': 'zu',
+    'isiXhosa': 'xh',
+    'Sepedi': 'nso',
+    'Setswana': 'tn',
+    'Sesotho': 'st',
+    'Xitsonga': 'ts',
+    'siSwati': 'ss',
+    'Tshivenda': 've',
+    'isiNdebele': 'nr',
+  };
+
 	@override
 	void initState() {
 		super.initState();
 		loadJsonContent();
     // loadContentFirebase();
     final apiKey = OPEN_AI_KEY;
-    openai = OpenAIService(apiKey!);
+    openai = OpenAIService(apiKey);
     // addAllChaptersFromJsonAsset('lib/Api/data/chapter1content.json');
     // createSampleChapter(); //check
   }
@@ -130,9 +147,10 @@ void fetchAndPrintChapters() async {
     if (lang != null) {
       setState(() {
         selectedLanguage = lang;
+        selectedLanguageCode = languageCodes[lang] ?? 'en'; // Update language code
         loading = true;
       });
-      print('Selected language: $lang');
+      print('Selected language: $lang (Code: ${languageCodes[lang]})');
       final translated = await openai.translateJsonNested(chapters, lang);
       setState(() {
         chapters = (translated as List).map<Chapter>((e) => Chapter.fromJson(e)).toList();
@@ -210,14 +228,15 @@ void fetchAndPrintChapters() async {
 										ElevatedButton(
 											style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white),
 											onPressed: () {
-												Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MiniIDE()));
+                        openai.speakText("Hello, this is a test of text to speech in $selectedLanguage", selectedLanguageCode);
+												// Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MiniIDE()));
 											},
 											child: Text('Open Environment'),
 										),
 									],
 								),
 							),
-							ContentPage(content: chap.content),
+							ContentPage(content: chap.content, languageCode: selectedLanguageCode),
 						],
 					),
 				);
@@ -233,13 +252,13 @@ void fetchAndPrintChapters() async {
 								padding: const EdgeInsets.symmetric(vertical: 12),
 								child: Text(chap.chapter, style: Theme.of(context).textTheme.headlineSmall),
 							),
-							ContentPage(content: chap.content),
+							ContentPage(content: chap.content, languageCode: selectedLanguageCode),
 						],
 					),
 				);
 			}
 		} else {
-			return ContentPage(content: content);
+			return ContentPage(content: content, languageCode: selectedLanguageCode);
 		}
 	}
 
