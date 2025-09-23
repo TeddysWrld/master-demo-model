@@ -1,0 +1,74 @@
+[
+  {
+    "type": "heading",
+    "text": "Understanding wueifiuwebiuwbees",
+    "style": {
+      "fontSize": 28,
+      "color": "#1E3A8A",
+      "bold": true
+    }
+  },
+  {
+    "type": "paragraph",
+    "text": "Variables are used to store information that your program can use and modify. Think of them as labeled boxes that hold values."
+  },
+  {
+    "type": "interactive_heading",
+    "text": "Draggable Variable Blocks",
+    "style": {
+      "fontSize": 24,
+      "color": "#2563EB",
+      "bold": true
+    }
+  },
+  {
+    "type": "interactive_blocks",
+    "blocks": [
+      {
+        "name": "x",
+        "value": 5,
+        "color": "#3B82F6",
+        "description": "Drag this variable into the print area to see its value."
+      },
+      {
+        "name": "y",
+        "value": 10,
+        "color": "#10B981",
+        "description": "Drag this variable to an operation block to perform calculations."
+      },
+      {
+        "name": "message",
+        "value": "'Hello World'",
+        "color": "#F59E0B",
+        "description": "A string variable you can drag to display text."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "text": "Try dragging the variable blocks into the designated area to see their values in action. This helps visualize how variables store and update information."
+  },
+  {
+    "type": "heading",
+    "text": "Rules for Variables",
+    "style": {
+      "fontSize": 24,
+      "color": "#2563EB",
+      "bold": true
+    }
+  },
+  {
+    "type": "list",
+    "items": [
+      "Variable names should be descriptive (e.g., score, userName).",
+      "They cannot start with a number.",
+      "Variable names are case-sensitive (x and X are different).",
+      "You can change the value stored in a variable anytime."
+    ]
+  },
+  {
+    "type": "paragraph",
+    "text": "Variables make programs dynamic. You can store user input, calculate values, and use them later anywhere in your code."
+  }
+]
+

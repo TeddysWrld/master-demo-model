@@ -1,0 +1,194 @@
+[
+  {
+    "chapter": "Variables",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Ukuqonda Iziguquko",
+        "style": {
+          "fontSize": 28,
+          "color": "#1E3A8A",
+          "bold": true
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Iziguquko zisetshenziselwa ukugcina ulwazi olungasetshenziswa futhi luguqulwe uhlelo lwakho. Cabanga ngazo njengamabhokisi anamalebula agcina amanani."
+      },
+      {
+        "type": "interactive_heading",
+        "text": "Amabhlogo Weziguquko Angadonswa",
+        "style": {
+          "fontSize": 24,
+          "color": "#2563EB",
+          "bold": true
+        }
+      },
+      {
+        "type": "interactive_blocks",
+        "blocks": [
+          { "name": "x", "value": 5, "color": "#3B82F6", "description": "Donsa le nguquko endaweni yokuphrinta ukuze ubone inani layo." },
+          { "name": "y", "value": 10, "color": "#10B981", "description": "Donsa le nguquko ebhulokini lomsebenzi ukuze wenze izibalo." },
+          { "name": "message", "value": "'Sawubona Mhlaba'", "color": "#F59E0B", "description": "Unguquko lwombhalo ongadonswa ukuze ubonise umbhalo." }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Zama ukudonsa amabhlogo weziguquko endaweni ebekwe yona ukuze ubone amanani awo esebenza. Lokhu kusiza ukubona ukuthi iziguquko zigcina futhi zivuselela kanjani ulwazi."
+      },
+      {
+        "type": "heading",
+        "text": "Imithetho Yeziguquko",
+        "style": { "fontSize": 24, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "list",
+        "items": [
+          "Amagama weziguquko kufanele achaze kahle (isb., score, userName).",
+          "Awakwazi ukuqala ngenombolo.",
+          "Amagama weziguquko abucayi kumacala (x no X ahlukile).",
+          "Ungashintsha inani eligcinwe enguqukweni noma yinini."
+        ]
+      },
+      {
+        "type": "basket_items",
+        "blocks": [
+          { "name": "x", "value": 5, "color": "#3B82F6", "description": "Nikeza u-x inani elingu-5" },
+          { "name": "y", "value": 10, "color": "#10B981", "description": "Nikeza u-y inani elingu-10" },
+          { "name": "message", "value": "'Sawubona Mhlaba'", "color": "#F59E0B", "description": "Nikeza umbhalo ku-message" }
+        ],
+        "basketCount": 0
+      },
+      {
+        "type": "paragraph",
+        "text": "Donsa amabhlogo weziguquko ebhasikethini ukuze ubone ukuthi ukunikezela amanani kuziguquko kwandisa kanjani inani. Lokhu kusiza ukubona ukunikezelwa kweziguquko ekuprogrameni."
+      }
+    ]
+  },
+  {
+    "chapter": "Izinhlobo Zedatha",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Ukuqonda Izinhlobo Zedatha",
+        "style": { "fontSize": 28, "color": "#1E40AF", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Izinhlobo zedatha zichaza uhlobo lwenani olungagcinwa ngu-nguquko. Izinhlobo ezijwayelekile zihlanganisa izinombolo, amanani anezindawo zokuhlukanisa, imibhalo, nezinguquko eziyi-Boolean."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Inombolo: izinombolo eziyinqwaba ezifana no-1, 42, -7",
+          "Float/Double: izinombolo ezinezinombolo eziyimihlaba ezifana no-3.14, -0.5",
+          "Umbhalo: amanani wombhalo afana no-'Sawubona' noma '123'",
+          "Boolean: iqiniso noma amanga"
+        ]
+      },
+      {
+        "type": "code",
+        "text": "age = 25\nprice = 9.99\nname = 'Alice'\nisStudent = true"
+      }
+    ]
+  },
+  {
+    "chapter": "Ama-Loops",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Ama-Loops Ekuprogrameni",
+        "style": { "fontSize": 28, "color": "#B91C1C", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Ama-loops akuvumela ukuphinda ibhulokhi yekhodi izikhathi eziningi ngaphandle kokuyibhala kabusha."
+      },
+      {
+        "type": "list",
+        "items": [
+          "For loops: phinda izikhathi ezithile",
+          "While loops: phinda inqobo nje uma isimo siyiqiniso",
+          "Do-while loops: sebenzisa okungenani kanye ngaphambi kokuhlola isimo"
+        ]
+      },
+      {
+        "type": "code",
+        "text": "for i in range(5):\n    print(i)\n\nx = 0\nwhile x < 5:\n    print(x)\n    x += 1"
+      }
+    ]
+  },
+  {
+    "chapter": "Imisebenzi",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Imisebenzi",
+        "style": { "fontSize": 28, "color": "#047857", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Imisebenzi yizigaba zekhowudi ezingasetshenziswa futhi ezenza umsebenzi othile. Ungabiza umsebenzi izikhathi eziningi ngezindlela ezahlukene."
+      },
+      {
+        "type": "code",
+        "text": "def greet(name):\n    print('Sawubona ' + name)\n\ngreet('Alice')\ngreet('Bob')"
+      },
+      {
+        "type": "paragraph",
+        "text": "Imisebenzi isiza ukuhlela ikhodi yakho nokunciphisa ukuphindwa kwayo."
+      }
+    ]
+  },
+  {
+    "chapter": "Izimo",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Izitatimende Zezimo",
+        "style": { "fontSize": 28, "color": "#9333EA", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Izimo zivumela uhlelo lwakho ukuthatha izinqumo ngokuya ngezimo ezithile."
+      },
+      {
+        "type": "list",
+        "items": [
+          "if: sebenzisa ikhodi uma isimo siyiqiniso",
+          "else: sebenzisa ikhodi uma isimo singeyona iqiniso",
+          "elif / else if: hlola izimo eziningi"
+        ]
+      },
+      {
+        "type": "code",
+        "text": "score = 85\nif score >= 90:\n    print('A')\nelif score >= 75:\n    print('B')\nelse:\n    print('C')"
+      }
+    ]
+  },
+  {
+    "chapter": "Ama-Arrays nama-Lists",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Ama-Arrays nama-Lists",
+        "style": { "fontSize": 28, "color": "#F59E0B", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Ama-arrays (noma ama-lists) asetshenziselwa ukugcina amanani amaningi ku-nguquko eyodwa."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Ungagcina izinombolo, imibhalo, noma ngisho nezinye arrays ngaphakathi ku-list.",
+          "Ama-lists angahlolwa, aguqulwe, futhi aphinde adluliswe."
+        ]
+      },
+      {
+        "type": "code",
+        "text": "fruits = ['i-apula', 'i-bhanana', 'i-cherry']\nprint(fruits[0])  # i-apula\nfruits.append('i-date')"
+      }
+    ]
+  }
+]

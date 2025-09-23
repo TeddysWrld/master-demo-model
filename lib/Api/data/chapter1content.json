@@ -1,0 +1,224 @@
+[
+  {
+    "chapter": "Variables",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Understanding Variables",
+        "style": {
+          "fontSize": 28,
+          "color": "#1E3A8A",
+          "bold": true
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Variables are used to store information that your program can use and modify. Think of them as labeled boxes that hold values."
+      },
+      {
+        "type": "interactive_heading",
+        "text": "Draggable Variable Blocks",
+        "style": {
+          "fontSize": 24,
+          "color": "#2563EB",
+          "bold": true
+        }
+      },
+      {
+        "type": "interactive_blocks",
+        "blocks": [
+          { "name": "x", "value": 5, "color": "#3B82F6", "description": "Drag this variable into the print area to see its value." },
+          { "name": "y", "value": 10, "color": "#10B981", "description": "Drag this variable to an operation block to perform calculations." },
+          { "name": "message", "value": "'Hello World'", "color": "#F59E0B", "description": "A string variable you can drag to display text." }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Try dragging the variable blocks into the designated area to see their values in action. This helps visualize how variables store and update information."
+      },
+      {
+        "type": "heading",
+        "text": "Rules for Variables",
+        "style": { "fontSize": 24, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "list",
+        "items": [
+          "Variable names should be descriptive (e.g., score, userName).",
+          "They cannot start with a number.",
+          "Variable names are case-sensitive (x and X are different).",
+          "You can change the value stored in a variable anytime."
+        ]
+      },
+      {
+        "type": "basket_items",
+        "blocks": [
+          { "name": "x", "value": 5, "color": "#3B82F6", "description": "Assign 5 to x" },
+          { "name": "y", "value": 10, "color": "#10B981", "description": "Assign 10 to y" },
+          { "name": "message", "value": "'Hello World'", "color": "#F59E0B", "description": "Assign a string to message" }
+        ],
+        "basketCount": 0
+      },
+      {
+        "type": "paragraph",
+        "text": "Drag the variable blocks into the basket to see how assigning values to variables increases the count. This helps you visualize variable assignment in programming."
+      },
+      {
+        "type": "variable_assignment",
+        "text": "x",
+        "description": "Drag x to the box to assign its value."
+      },
+      {
+        "type": "if_condition",
+        "text": "You passed!",
+        "items": ["Try again!"],
+        "description": "Drag true/false to the box to see the result."
+      },
+      {
+        "type": "loop_counter",
+        "description": "Click to simulate a loop incrementing a counter."
+      },
+      {
+        "type": "interactive_blocks",
+        "blocks": [
+          { "name": "score", "value": 100, "color": "#8B5CF6", "description": "Drag to see your score." },
+          { "name": "level", "value": 2, "color": "#F43F5E", "description": "Drag to see your level." }
+        ]
+      },
+      {
+        "type": "basket_items",
+        "blocks": [
+          { "name": "apple", "value": 1, "color": "#F87171", "description": "Add an apple to the basket." },
+          { "name": "banana", "value": 1, "color": "#FBBF24", "description": "Add a banana to the basket." }
+        ],
+        "basketCount": 0
+      }
+    ]
+  },
+  {
+    "chapter": "Data Types",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Understanding Data Types",
+        "style": { "fontSize": 28, "color": "#1E40AF", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Data types define the kind of value a variable can hold. Common types include integers, floats, strings, and booleans."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Integer: whole numbers like 1, 42, -7",
+          "Float/Double: decimal numbers like 3.14, -0.5",
+          "String: text values like 'Hello' or '123'",
+          "Boolean: true or false"
+        ]
+      },
+      {
+        "type": "code",
+        "text": "age = 25\nprice = 9.99\nname = 'Alice'\nisStudent = true"
+      }
+    ]
+  },
+  {
+    "chapter": "Loops",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Loops in Programming",
+        "style": { "fontSize": 28, "color": "#B91C1C", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Loops allow you to repeat a block of code multiple times without rewriting it."
+      },
+      {
+        "type": "list",
+        "items": [
+          "For loops: iterate a set number of times",
+          "While loops: repeat as long as a condition is true",
+          "Do-while loops: execute at least once before checking the condition"
+        ]
+      },
+      {
+        "type": "code",
+        "text": "for i in range(5):\n    print(i)\n\nx = 0\nwhile x < 5:\n    print(x)\n    x += 1"
+      }
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Functions",
+        "style": { "fontSize": 28, "color": "#047857", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Functions are reusable blocks of code that perform a specific task. You can call a function multiple times with different inputs."
+      },
+      {
+        "type": "code",
+        "text": "def greet(name):\n    print('Hello ' + name)\n\ngreet('Alice')\ngreet('Bob')"
+      },
+      {
+        "type": "paragraph",
+        "text": "Functions help organize your code and reduce repetition."
+      }
+    ]
+  },
+  {
+    "chapter": "Conditionals",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Conditional Statements",
+        "style": { "fontSize": 28, "color": "#9333EA", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Conditionals allow your program to make decisions based on certain conditions."
+      },
+      {
+        "type": "list",
+        "items": [
+          "if: executes code if condition is true",
+          "else: executes code if condition is false",
+          "elif / else if: checks multiple conditions"
+        ]
+      },
+      {
+        "type": "code",
+        "text": "score = 85\nif score >= 90:\n    print('A')\nelif score >= 75:\n    print('B')\nelse:\n    print('C')"
+      }
+    ]
+  },
+  {
+    "chapter": "Arrays and Lists",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Arrays and Lists",
+        "style": { "fontSize": 28, "color": "#F59E0B", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Arrays (or lists) are used to store multiple values in a single variable."
+      },
+      {
+        "type": "list",
+        "items": [
+          "You can store numbers, strings, or even other arrays inside a list.",
+          "Lists can be indexed, modified, and iterated over."
+        ]
+      },
+      {
+        "type": "code",
+        "text": "fruits = ['apple', 'banana', 'cherry']\nprint(fruits[0])  # apple\nfruits.append('date')"
+      }
+    ]
+  }
+]
