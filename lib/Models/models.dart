@@ -39,6 +39,23 @@ class ContentItem {
   final Style? style; // for headings or interactive headings
   int basketCount;
   final String? description; // for interactive explanations
+  final String? id;
+  final String? lockId;
+  final String? title;
+  final String? prompt;
+  final List<String>? options;
+  final int? correctIndex;
+  final String? successMessage;
+  final String? failureMessage;
+  final bool? showStarButton;
+  final String? starLabel;
+  final String? unlockTarget;
+  final String? unlockLabel;
+  final String? retryLabel;
+  final String? code;
+  final String? successActionLabel;
+  final String? imagePath;
+  final String? caption;
 
   ContentItem({
     required this.type,
@@ -48,6 +65,23 @@ class ContentItem {
     this.style,
     this.basketCount = 0,
     this.description,
+    this.id,
+    this.lockId,
+    this.title,
+    this.prompt,
+    this.options,
+    this.correctIndex,
+    this.successMessage,
+    this.failureMessage,
+    this.showStarButton,
+    this.starLabel,
+    this.unlockTarget,
+    this.unlockLabel,
+    this.retryLabel,
+    this.code,
+    this.successActionLabel,
+    this.imagePath,
+    this.caption,
   });
 
 
@@ -65,6 +99,25 @@ class ContentItem {
       style: json['style'] != null ? Style.fromJson(json['style']) : null,
       basketCount: json['basketCount'] ?? 0,
       description: json['description'],
+      id: json['id'],
+      lockId: json['lockId'],
+      title: json['title'],
+      prompt: json['prompt'],
+      options: (json['options'] != null)
+        ? List<String>.from(json['options'] as List<dynamic>)
+        : null,
+      correctIndex: json['correctIndex'],
+      successMessage: json['successMessage'],
+      failureMessage: json['failureMessage'],
+      showStarButton: json['showStarButton'],
+      starLabel: json['starLabel'],
+      unlockTarget: json['unlockTarget'],
+      unlockLabel: json['unlockLabel'],
+      retryLabel: json['retryLabel'],
+      code: json['code'],
+      successActionLabel: json['successActionLabel'],
+      imagePath: json['imagePath'],
+      caption: json['caption'],
     );
   }
 
@@ -76,6 +129,23 @@ class ContentItem {
         if (style != null) 'style': style!.toJson(),
         'basketCount': basketCount,
         if (description != null) 'description': description,
+        if (id != null) 'id': id,
+        if (lockId != null) 'lockId': lockId,
+        if (title != null) 'title': title,
+        if (prompt != null) 'prompt': prompt,
+        if (options != null) 'options': options,
+        if (correctIndex != null) 'correctIndex': correctIndex,
+        if (successMessage != null) 'successMessage': successMessage,
+        if (failureMessage != null) 'failureMessage': failureMessage,
+        if (showStarButton != null) 'showStarButton': showStarButton,
+        if (starLabel != null) 'starLabel': starLabel,
+        if (unlockTarget != null) 'unlockTarget': unlockTarget,
+        if (unlockLabel != null) 'unlockLabel': unlockLabel,
+        if (retryLabel != null) 'retryLabel': retryLabel,
+        if (code != null) 'code': code,
+        if (successActionLabel != null) 'successActionLabel': successActionLabel,
+        if (imagePath != null) 'imagePath': imagePath,
+        if (caption != null) 'caption': caption,
       };
 }
 

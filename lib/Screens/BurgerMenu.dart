@@ -48,7 +48,7 @@ class BurgerMenu extends StatelessWidget {
                   final chap = entry.value;
                   return ListTile(
                     title: Text(
-                      'Chapter ${idx + 1} ${chap.chapter}',
+                      chap.chapter,
                       style: TextStyle(
                         fontWeight: selectedIndex == idx ? FontWeight.bold : FontWeight.normal,
                       ),
@@ -64,22 +64,22 @@ class BurgerMenu extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-                minimumSize: const Size.fromHeight(48),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              ),
-              icon: const Icon(Icons.logout),
-              label: const Text('Logout'),
-              onPressed: () {
-                logout(context);
-              },
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(16.0),
+          //   child: ElevatedButton.icon(
+          //     style: ElevatedButton.styleFrom(
+          //       backgroundColor: Colors.red,
+          //       foregroundColor: Colors.white,
+          //       minimumSize: const Size.fromHeight(48),
+          //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          //     ),
+          //     icon: const Icon(Icons.logout),
+          //     label: const Text('Logout'),
+          //     onPressed: () {
+          //       logout(context);
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );

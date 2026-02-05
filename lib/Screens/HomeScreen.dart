@@ -7,11 +7,9 @@ import 'package:master_demo_app/env.dart';
 import 'ChapterContent.dart';
 import '../Models/models.dart';
 import 'BurgerMenu.dart';
-import 'IDEenvironement.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HomeScreen extends StatefulWidget {
-	const HomeScreen({Key? key, this.title = 'Masters Demo Model'}) : super(key: key);
+	const HomeScreen({Key? key, this.title = 'Masters Model by Lindi Mokele'}) : super(key: key);
 	final String title;
 
 	@override
@@ -30,31 +28,15 @@ late OpenAIService openai;
   
   final List<String> southAfricanLanguages = [
     'English',
-    'Afrikaans',
     'isiZulu',
-    'isiXhosa',
-    'Sepedi',
-    'Setswana',
-    'Sesotho',
-    'Xitsonga',
-    'siSwati',
-    'Tshivenda',
-    'isiNdebele',
+
   ];
 
   // Map of language names to their language codes
   final Map<String, String> languageCodes = {
     'English': 'en',
-    'Afrikaans': 'af',
     'isiZulu': 'zu',
-    'isiXhosa': 'xh',
-    'Sepedi': 'nso',
-    'Setswana': 'tn',
-    'Sesotho': 'st',
-    'Xitsonga': 'ts',
-    'siSwati': 'ss',
-    'Tshivenda': 've',
-    'isiNdebele': 'nr',
+
   };
 
 	@override

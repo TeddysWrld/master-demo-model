@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
             return const Scaffold(
                 body: Center(child: CircularProgressIndicator()));
           }
-          if (snapshot.hasData) {
             return const HomeScreen();
-          } else {
-            return const LoginScreen();
-          }
+          // if (snapshot.hasData) {
+          // } else {
+          //   return const LoginScreen();
+          // }
         },
       ),
     );

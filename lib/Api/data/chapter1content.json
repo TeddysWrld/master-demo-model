@@ -1,223 +1,345 @@
 [
   {
-    "chapter": "Variables",
+    "chapter": "Learning Variables",
     "content": [
       {
         "type": "heading",
-        "text": "Understanding Variables",
-        "style": {
-          "fontSize": 28,
-          "color": "#1E3A8A",
-          "bold": true
-        }
+        "text": "UNDERSTANDING VARIABLES",
+        "style": { "fontSize": 28, "color": "#1E3A8A", "bold": true }
       },
       {
         "type": "paragraph",
-        "text": "Variables are used to store information that your program can use and modify. Think of them as labeled boxes that hold values."
-      },
-      {
-        "type": "interactive_heading",
-        "text": "Draggable Variable Blocks",
-        "style": {
-          "fontSize": 24,
-          "color": "#2563EB",
-          "bold": true
-        }
-      },
-      {
-        "type": "interactive_blocks",
-        "blocks": [
-          { "name": "x", "value": 5, "color": "#3B82F6", "description": "Drag this variable into the print area to see its value." },
-          { "name": "y", "value": 10, "color": "#10B981", "description": "Drag this variable to an operation block to perform calculations." },
-          { "name": "message", "value": "'Hello World'", "color": "#F59E0B", "description": "A string variable you can drag to display text." }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "text": "Try dragging the variable blocks into the designated area to see their values in action. This helps visualize how variables store and update information."
+        "text": "Note: These are the only two concepts that we are going to focus on."
       },
       {
         "type": "heading",
-        "text": "Rules for Variables",
-        "style": { "fontSize": 24, "color": "#2563EB", "bold": true }
+        "text": "What is a variable?",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "A variable is a name given to a piece of memory in the computer where a program stores information. It stores values such as numbers and names that will be used at a later stage."
+      },
+      {
+        "type": "paragraph",
+        "text": "Think of a variable as a container or a basket that is storing a fruit in it. For example:"
       },
       {
         "type": "list",
         "items": [
-          "Variable names should be descriptive (e.g., score, userName).",
-          "They cannot start with a number.",
-          "Variable names are case-sensitive (x and X are different).",
-          "You can change the value stored in a variable anytime."
+          "The whole basket is the variable.",
+          "\"Banana\" is the value stored in the variable.",
+          "\"Fruitbasket\" is the variable name."
         ]
       },
       {
-        "type": "basket_items",
-        "blocks": [
-          { "name": "x", "value": 5, "color": "#3B82F6", "description": "Assign 5 to x" },
-          { "name": "y", "value": 10, "color": "#10B981", "description": "Assign 10 to y" },
-          { "name": "message", "value": "'Hello World'", "color": "#F59E0B", "description": "Assign a string to message" }
+        "type": "image",
+        "imagePath": "assets/fruitbasket demostration.png",
+        "caption": "Fruit basket example"
+      },
+      {
+        "type": "heading",
+        "text": "What the variable contains?",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "list",
+        "items": [
+          "Name: A unique identifier for the memory location (e.g., Fruitbasket).",
+          "Value: The actual data stored (e.g., Banana).",
+          "Data Type: Defines the kind of data the variable holds (e.g., integer for whole numbers, string for text, float for numbers with decimals)."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "How it works?",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "You create a variable by giving it a unique name, the type of data it will store, and you can give it a value it will store."
+      },
+      {
+        "type": "heading",
+        "text": "Example 1",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Create a variable to store integer numbers."
+      },
+      {
+        "type": "paragraph",
+        "text": "Answer:"
+      },
+      {
+        "type": "code",
+        "text": "DECLARE number AS INTEGER"
+      },
+      {
+        "type": "heading",
+        "text": "Example 2",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Create a variable to store integer number 20."
+      },
+      {
+        "type": "paragraph",
+        "text": "Answer:"
+      },
+      {
+        "type": "code",
+        "text": "DECLARE number AS INTEGER\nSET number to 20"
+      },
+      {
+        "type": "heading",
+        "text": "Key terms",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "list",
+        "items": [
+          "DECLARE means create a variable.",
+          "number is the variable name.",
+          "INTEGER means the variable will store whole numbers.",
+          "SET assigns a value to the variable."
+        ]
+      },
+      {
+        "type": "challenge",
+        "id": "variables_challenge_1",
+        "title": "Challenge 1",
+        "prompt": "Create a variable to store the age of the student. Choose the correct option:",
+        "options": [
+          "SET Age to 20",
+          "DECLARE Age",
+          "DECLARE Age AS INTEGER"
         ],
-        "basketCount": 0
+        "correctIndex": 2,
+        "successMessage": "Correct! Collect your star.",
+        "failureMessage": "Oops! Try again... you can do this!",
+        "showStarButton": true,
+        "starLabel": "Collect your star",
+        "retryLabel": "Return to challenge",
+        "unlockTarget": "variables_challenge_2",
+        "unlockLabel": "Unlock Challenge 2"
       },
       {
-        "type": "paragraph",
-        "text": "Drag the variable blocks into the basket to see how assigning values to variables increases the count. This helps you visualize variable assignment in programming."
-      },
-      {
-        "type": "variable_assignment",
-        "text": "x",
-        "description": "Drag x to the box to assign its value."
-      },
-      {
-        "type": "if_condition",
-        "text": "You passed!",
-        "items": ["Try again!"],
-        "description": "Drag true/false to the box to see the result."
-      },
-      {
-        "type": "loop_counter",
-        "description": "Click to simulate a loop incrementing a counter."
-      },
-      {
-        "type": "interactive_blocks",
-        "blocks": [
-          { "name": "score", "value": 100, "color": "#8B5CF6", "description": "Drag to see your score." },
-          { "name": "level", "value": 2, "color": "#F43F5E", "description": "Drag to see your level." }
-        ]
-      },
-      {
-        "type": "basket_items",
-        "blocks": [
-          { "name": "apple", "value": 1, "color": "#F87171", "description": "Add an apple to the basket." },
-          { "name": "banana", "value": 1, "color": "#FBBF24", "description": "Add a banana to the basket." }
+        "type": "challenge",
+        "id": "variables_challenge_2",
+        "lockId": "variables_challenge_2",
+        "title": "Challenge 2",
+        "prompt": "Assign a variable named 'Points' to store the points the team has collected. The value of the points collected is 20. Choose the correct option:",
+        "options": [
+          "SET Points",
+          "SET Points to 20",
+          "DECLARE Points to 20"
         ],
-        "basketCount": 0
+        "correctIndex": 1,
+        "successMessage": "Correct! Collect your star.",
+        "failureMessage": "Oops! Try again... you can do this!",
+        "showStarButton": true,
+        "starLabel": "Collect your star",
+        "retryLabel": "Return to challenge"
       }
     ]
   },
   {
-    "chapter": "Data Types",
+    "chapter": "Learning If-Statements",
     "content": [
       {
         "type": "heading",
-        "text": "Understanding Data Types",
-        "style": { "fontSize": 28, "color": "#1E40AF", "bold": true }
+        "text": "UNDERSTANDING IF-STATEMENTS",
+        "style": { "fontSize": 28, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "heading",
+        "text": "What is an IF-statement?",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
       },
       {
         "type": "paragraph",
-        "text": "Data types define the kind of value a variable can hold. Common types include integers, floats, strings, and booleans."
+        "text": "An if-statement is a concept in programming that we use to make decisions in a program."
+      },
+      {
+        "type": "heading",
+        "text": "What the IF-statement contains",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
       },
       {
         "type": "list",
         "items": [
-          "Integer: whole numbers like 1, 42, -7",
-          "Float/Double: decimal numbers like 3.14, -0.5",
-          "String: text values like 'Hello' or '123'",
-          "Boolean: true or false"
+          "The keyword: IF a condition is true, THEN do something.",
+          "A condition: The if statement evaluates an expression using comparison operators like ==, >, or < that results in a boolean value: either true or false."
         ]
       },
       {
-        "type": "code",
-        "text": "age = 25\nprice = 9.99\nname = 'Alice'\nisStudent = true"
-      }
-    ]
-  },
-  {
-    "chapter": "Loops",
-    "content": [
-      {
         "type": "heading",
-        "text": "Loops in Programming",
-        "style": { "fontSize": 28, "color": "#B91C1C", "bold": true }
+        "text": "How it works",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "code",
+        "text": "IF Light is green THEN\n    Cross the road\nEND IF"
+      },
+      {
+        "type": "image",
+        "imagePath": "assets/if-statement.png",
+        "caption": "IF-statement example"
       },
       {
         "type": "paragraph",
-        "text": "Loops allow you to repeat a block of code multiple times without rewriting it."
+        "text": "The program checks the condition (\"Light is green\"). If the condition is true, the action (\"Cross the road\") is executed."
+      },
+      {
+        "type": "heading",
+        "text": "Example 1",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Let's check if a student can get an ID."
+      },
+      {
+        "type": "code",
+        "text": "IF Age >= 16 THEN\n    DISPLAY \"You can get an ID\"\nEND IF"
+      },
+      {
+        "type": "paragraph",
+        "text": "What example 1 means:"
       },
       {
         "type": "list",
         "items": [
-          "For loops: iterate a set number of times",
-          "While loops: repeat as long as a condition is true",
-          "Do-while loops: execute at least once before checking the condition"
+          "IF -> keyword",
+          "Age >= 16 -> this is the condition",
+          "DISPLAY \"You can get an ID\" -> this is the action",
+          "END IF -> end of the IF-statement"
         ]
       },
       {
-        "type": "code",
-        "text": "for i in range(5):\n    print(i)\n\nx = 0\nwhile x < 5:\n    print(x)\n    x += 1"
-      }
-    ]
-  },
-  {
-    "chapter": "Functions",
-    "content": [
-      {
         "type": "heading",
-        "text": "Functions",
-        "style": { "fontSize": 28, "color": "#047857", "bold": true }
+        "text": "Example 2",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
       },
       {
         "type": "paragraph",
-        "text": "Functions are reusable blocks of code that perform a specific task. You can call a function multiple times with different inputs."
+        "text": "Let's check if the student has passed."
       },
       {
         "type": "code",
-        "text": "def greet(name):\n    print('Hello ' + name)\n\ngreet('Alice')\ngreet('Bob')"
+        "text": "IF exam >= 50 THEN\n    DISPLAY \"The student passed\"\nEND IF"
       },
       {
         "type": "paragraph",
-        "text": "Functions help organize your code and reduce repetition."
-      }
-    ]
-  },
-  {
-    "chapter": "Conditionals",
-    "content": [
-      {
-        "type": "heading",
-        "text": "Conditional Statements",
-        "style": { "fontSize": 28, "color": "#9333EA", "bold": true }
-      },
-      {
-        "type": "paragraph",
-        "text": "Conditionals allow your program to make decisions based on certain conditions."
+        "text": "What example 2 means:"
       },
       {
         "type": "list",
         "items": [
-          "if: executes code if condition is true",
-          "else: executes code if condition is false",
-          "elif / else if: checks multiple conditions"
+          "IF -> keyword that checks the condition",
+          "exam >= 50 -> this is the condition",
+          "THEN -> tells the computer what to do",
+          "DISPLAY \"The student passed\" -> this is the action",
+          "END IF -> the end of the IF-statement"
         ]
       },
       {
-        "type": "code",
-        "text": "score = 85\nif score >= 90:\n    print('A')\nelif score >= 75:\n    print('B')\nelse:\n    print('C')"
-      }
-    ]
-  },
-  {
-    "chapter": "Arrays and Lists",
-    "content": [
-      {
         "type": "heading",
-        "text": "Arrays and Lists",
-        "style": { "fontSize": 28, "color": "#F59E0B", "bold": true }
+        "text": "So what do you do if the condition is false?",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
       },
       {
         "type": "paragraph",
-        "text": "Arrays (or lists) are used to store multiple values in a single variable."
+        "text": "Another action must be taken if the condition is false. To do that, you add the keyword ELSE."
+      },
+      {
+        "type": "heading",
+        "text": "How it works",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "code",
+        "text": "IF Light is green THEN\n    Cross the road\nELSE\n    Wait\nEND IF"
+      },
+      {
+        "type": "image",
+        "imagePath": "assets/if-statement pic 2.png",
+        "caption": "IF-ELSE statement example"
+      },
+      {
+        "type": "paragraph",
+        "text": "If the condition is true, the action (\"Cross the road\") is executed. If the condition is false, the action (\"Wait\") will be executed."
+      },
+      {
+        "type": "heading",
+        "text": "Example 3",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Let's check if the student passed or failed."
+      },
+      {
+        "type": "code",
+        "text": "IF Mark >= 50 THEN\n    DISPLAY \"The student passed\"\nELSE\n    DISPLAY \"The student failed\"\nEND IF"
+      },
+      {
+        "type": "paragraph",
+        "text": "What example 3 means:"
       },
       {
         "type": "list",
         "items": [
-          "You can store numbers, strings, or even other arrays inside a list.",
-          "Lists can be indexed, modified, and iterated over."
+          "IF -> checks a condition",
+          "Mark >= 50 -> this is the condition",
+          "THEN -> tells the computer what to do",
+          "DISPLAY \"The student passed\" -> action when the condition is true",
+          "ELSE -> what to do if the condition is false",
+          "DISPLAY \"The student failed\" -> action when the condition is false",
+          "END IF -> the end of the IF-statement"
         ]
       },
       {
-        "type": "code",
-        "text": "fruits = ['apple', 'banana', 'cherry']\nprint(fruits[0])  # apple\nfruits.append('date')"
+        "type": "challenge",
+        "id": "if_challenge_1",
+        "title": "Challenge 1",
+        "prompt": "A person qualifies for a pension if they are 60 years or older. Given the following, answer the question below. Question 1: Change the condition to 50. Choose the correct option:",
+        "code": "DECLARE age AS INTEGER\nSET age TO 60\nIF age >= 60 THEN\n    DISPLAY \"You qualify for a pension\"\nELSE\n    DISPLAY \"You do not qualify for a pension\"\nEND IF",
+        "options": [
+          "You qualify for pension",
+          "You do not qualify for pension",
+          "None of the above"
+        ],
+        "correctIndex": 1,
+        "successMessage": "Correct! Collect your star.",
+        "failureMessage": "Oops! Try again... you can do this!",
+        "showStarButton": true,
+        "starLabel": "Collect your star",
+        "retryLabel": "Return to challenge",
+        "unlockTarget": "if_challenge_2",
+        "unlockLabel": "Unlock Challenge 2"
+      },
+      {
+        "type": "challenge",
+        "id": "if_challenge_2",
+        "lockId": "if_challenge_2",
+        "title": "Question 2",
+        "prompt": "What condition will allow a person aged 55 to qualify? Choose the correct option:",
+        "options": [
+          "IF age == 50",
+          "SET age to 50",
+          "IF age >= 50"
+        ],
+        "correctIndex": 2,
+        "successMessage": "Correct! Collect your star.",
+        "failureMessage": "Oops! Try again... you can do this!",
+        "showStarButton": true,
+        "starLabel": "Collect your star",
+        "retryLabel": "Return to challenge",
+        "successActionLabel": "Well done!"
       }
     ]
   }

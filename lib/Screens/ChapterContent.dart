@@ -17,6 +17,9 @@ class ContentPage extends StatefulWidget {
 class _ContentPageState extends State<ContentPage> {
   String? droppedValue; // For interactive blocks
   late OpenAIService openAIService;
+  final Map<String, int> _selectedOptions = {};
+  final Set<String> _submittedChallenges = {};
+  final Set<String> _unlockedChallenges = {};
 
   @override
   void initState() {
@@ -46,6 +49,10 @@ class _ContentPageState extends State<ContentPage> {
   }
 
   Widget renderItem(ContentItem item) {
+    if (item.lockId != null && !_unlockedChallenges.contains(item.lockId)) {
+      return const SizedBox.shrink();
+    }
+
     switch (item.type) {
       case 'heading':
       case 'interactive_heading':
@@ -93,7 +100,7 @@ class _ContentPageState extends State<ContentPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ...(item.items ?? []).map((i) => Text("• $i", style: const TextStyle(fontSize: 16))).toList(),
+              ...(item.items ?? []).map((i) => Text("- $i", style: const TextStyle(fontSize: 16))).toList(),
               Align(
                 alignment: Alignment.centerLeft,
                 child: IconButton(
@@ -126,6 +133,22 @@ class _ContentPageState extends State<ContentPage> {
           ),
         );
 
+      case 'image':
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (item.imagePath != null)
+                Image.asset(item.imagePath!, fit: BoxFit.contain),
+              if (item.caption != null) ...[
+                const SizedBox(height: 6),
+                Text(item.caption!, style: const TextStyle(fontSize: 14, color: Colors.black54)),
+              ],
+            ],
+          ),
+        );
+
       case 'interactive_blocks':
         return Wrap(
           spacing: 12,
@@ -142,7 +165,7 @@ class _ContentPageState extends State<ContentPage> {
         );
 
       case 'basket_items':
-  // basketCount is now non-nullable and defaults to 0
+        // basketCount is now non-nullable and defaults to 0
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -170,7 +193,7 @@ class _ContentPageState extends State<ContentPage> {
                 return Column(
                   children: [
                     Icon(Icons.shopping_basket, size: 64, color: Colors.brown.shade400),
-                    Text('Basket count: \\${item.basketCount}', style: const TextStyle(fontSize: 18)),
+                    Text('Basket count: ${item.basketCount}', style: const TextStyle(fontSize: 18)),
                   ],
                 );
               },
@@ -307,9 +330,146 @@ class _ContentPageState extends State<ContentPage> {
           ],
         );
 
+      case 'challenge':
+        return _buildChallenge(item);
+
       default:
         return const SizedBox.shrink();
     }
+  }
+
+  Widget _buildChallenge(ContentItem item) {
+    final id = item.id ?? item.title ?? item.prompt ?? item.text ?? 'challenge';
+    final selected = _selectedOptions[id];
+    final submitted = _submittedChallenges.contains(id);
+    final isCorrect = submitted && selected == item.correctIndex;
+    final options = item.options ?? [];
+
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black12),
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.grey.shade50,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (item.title != null)
+            Text(item.title!, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          if (item.prompt != null) ...[
+            const SizedBox(height: 6),
+            Text(item.prompt!, style: const TextStyle(fontSize: 16)),
+          ],
+          if (item.code != null) ...[
+            const SizedBox(height: 8),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(10),
+              color: Colors.grey.shade200,
+              child: Text(item.code!, style: const TextStyle(fontFamily: 'monospace')),
+            ),
+          ],
+          const SizedBox(height: 8),
+          ...options.asMap().entries.map((entry) {
+            final idx = entry.key;
+            final option = entry.value;
+            return RadioListTile<int>(
+              value: idx,
+              groupValue: selected,
+              onChanged: (value) {
+                setState(() {
+                  _selectedOptions[id] = value ?? 0;
+                });
+              },
+              title: Text(option),
+            );
+          }).toList(),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: selected == null
+                    ? null
+                    : () {
+                        setState(() {
+                          _submittedChallenges.add(id);
+                        });
+                      },
+                child: const Text('Check Answer'),
+              ),
+              const SizedBox(width: 8),
+              if (submitted && !isCorrect)
+                ElevatedButton.icon(
+                  onPressed: () {
+                    setState(() {
+                      _submittedChallenges.remove(id);
+                      _selectedOptions.remove(id);
+                    });
+                  },
+                  icon: const Icon(Icons.refresh),
+                  label: Text(item.retryLabel ?? 'Return to challenge'),
+                ),
+            ],
+          ),
+          if (submitted) ...[
+            const SizedBox(height: 8),
+            Text(
+              isCorrect
+                  ? (item.successMessage ?? 'Correct!')
+                  : (item.failureMessage ?? 'Incorrect. Try again.'),
+              style: TextStyle(
+                fontSize: 16,
+                color: isCorrect ? Colors.green.shade700 : Colors.red.shade700,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+          if (submitted && isCorrect) ...[
+            const SizedBox(height: 8),
+            if (item.showStarButton == true)
+              ElevatedButton.icon(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Star collected!')),
+                  );
+                },
+                icon: const Icon(Icons.star),
+                label: Text(item.starLabel ?? 'Collect your star'),
+              ),
+            if (item.unlockTarget != null && !_unlockedChallenges.contains(item.unlockTarget))
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    setState(() {
+                      _unlockedChallenges.add(item.unlockTarget!);
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(item.unlockLabel ?? 'Challenge unlocked')),
+                    );
+                  },
+                  icon: const Icon(Icons.lock_open),
+                  label: Text(item.unlockLabel ?? 'Unlock challenge'),
+                ),
+              ),
+            if (item.successActionLabel != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: ElevatedButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(item.successActionLabel!)),
+                    );
+                  },
+                  child: Text(item.successActionLabel!),
+                ),
+              ),
+          ],
+        ],
+      ),
+    );
   }
 
   Widget _buildBlock(InteractiveBlock block) {
