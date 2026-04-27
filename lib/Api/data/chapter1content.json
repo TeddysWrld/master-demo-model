@@ -4,12 +4,44 @@
     "content": [
       {
         "type": "heading",
-        "text": "UNDERSTANDING VARIABLES",
-        "style": { "fontSize": 28, "color": "#1E3A8A", "bold": true }
+        "text": "Concept 1: VARIABLES",
+        "style": { "fontSize": 30, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "heading",
+        "text": "Learning Outcome",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
       },
       {
         "type": "paragraph",
-        "text": "Note: These are the only two concepts that we are going to focus on."
+        "text": "By the end of this section, students will be able to explain and apply how variables store, copy, and update values in a program."
+      },
+      {
+        "type": "heading",
+        "text": "Learning Objectives (Variables)",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "list",
+        "items": [
+          "Learning objective 1: Storing a variable. Students will be able to demonstrate how a value is stored in a variable using practical interaction.",
+          "Learning objective 2: Copying a value. Students will be able to explain and simulate how a value from one variable can be copied to another variable.",
+          "Learning objective 3: Overriding a value. Students will be able to explain and demonstrate how assigning a new value overrides (replaces) an existing variable value."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Instructional Design Note",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "The design of this section follows principles from Cognitive Load Theory and the Worked Example Effect, where learners are first introduced to concepts through simplified visual explanations before progressing to interactive activities. The use of real-world analogies (basket and fruit) reduces cognitive complexity, while the interactive tasks support active learning and retrieval practice."
+      },
+      {
+        "type": "heading",
+        "text": "UNDERSTANDING VARIABLES",
+        "style": { "fontSize": 28, "color": "#1E3A8A", "bold": true }
       },
       {
         "type": "heading",
@@ -18,7 +50,7 @@
       },
       {
         "type": "paragraph",
-        "text": "A variable is a name given to a piece of memory in the computer where a program stores information. It stores values such as numbers and names that will be used at a later stage."
+        "text": "A variable is a name given to a piece of memory in the computer where a program stores information. It stores values such as numbers and names that will be used in a later stage."
       },
       {
         "type": "paragraph",
@@ -33,9 +65,25 @@
         ]
       },
       {
-        "type": "image",
-        "imagePath": "assets/fruitbasket demostration.png",
-        "caption": "Fruit basket example"
+        "type": "heading",
+        "text": "Key terms",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "list",
+        "items": [
+          "DECLARE means create a variable.",
+          "number is the variable name.",
+          "INTEGER means the variable will store whole numbers.",
+          "SET assigns a value to the variable.",
+          "Copying means taking the value from one variable and placing it into another variable.",
+          "Overriding means replacing an old value with a new value."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Learning Objective 1: Storing a variable",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
       },
       {
         "type": "heading",
@@ -45,19 +93,45 @@
       {
         "type": "list",
         "items": [
-          "Name: A unique identifier for the memory location (e.g., Fruitbasket).",
-          "Value: The actual data stored (e.g., Banana).",
-          "Data Type: Defines the kind of data the variable holds (e.g., integer for whole numbers, string for text, float for numbers with decimals)."
+          "Name: A unique identifier for the memory location (e.g. Fruitbasket).",
+          "Value: The actual data stored (e.g. Banana).",
+          "Data Type: Defines the kind of data the variable holds.",
+          "Integer: whole numbers.",
+          "String: text.",
+          "Float: decimal numbers."
         ]
       },
       {
         "type": "heading",
-        "text": "How it works?",
+        "text": "How variables work",
         "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
       },
       {
-        "type": "paragraph",
-        "text": "You create a variable by giving it a unique name, the type of data it will store, and you can give it a value it will store."
+        "type": "list",
+        "items": [
+          "Declare: Creates the variable.",
+          "Assign: Gives a value to the variable.",
+          "Use/Update: Retrieve or change the value in the variable."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Practical Example 1:",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "list",
+        "items": [
+          "When you click on the fruit.",
+          "The fruit moves into the basket.",
+          "The basket will update visually."
+        ]
+      },
+      {
+        "type": "variable_basket_demo",
+        "text": "Click a fruit to store it in the basket.",
+        "imagePath": "assets/fruitbasket demostration.png",
+        "caption": "Fruit basket example"
       },
       {
         "type": "heading",
@@ -95,22 +169,120 @@
       },
       {
         "type": "heading",
-        "text": "Key terms",
+        "text": "Learning Objective 2: Copying a value",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "This activity demonstrates how one variable copies its value to another variable."
+      },
+      {
+        "type": "heading",
+        "text": "Practical example 1",
         "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
       },
       {
         "type": "list",
         "items": [
-          "DECLARE means create a variable.",
-          "number is the variable name.",
-          "INTEGER means the variable will store whole numbers.",
-          "SET assigns a value to the variable."
+          "Basket A: stores selected fruit.",
+          "Basket B: empty initially.",
+          "Click \"Copy\" button to assign one variable to another.",
+          "Basket B receives same fruit and will store the copied value."
         ]
+      },
+      {
+        "type": "copy_variable_demo",
+        "text": "Select a fruit for Basket A, then press COPY to copy it to Basket B."
+      },
+      {
+        "type": "paragraph",
+        "text": "🧠 Note: When the copy action is triggered, the value stored in basketA is assigned to basketB, demonstrating how values are transferred between variables without changing the original variable."
+      },
+      {
+        "type": "heading",
+        "text": "Example 3",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Copying a value from one variable to another and then displaying both."
+      },
+      {
+        "type": "paragraph",
+        "text": "Answer:"
+      },
+      {
+        "type": "code",
+        "text": "DECLARE basketA AS STRING\nDECLARE basketB AS STRING\n\nSET basketA TO \"Apple\"\nSET basketB TO basketA\n\nDISPLAY basketA\nDISPLAY basketB"
+      },
+      {
+        "type": "paragraph",
+        "text": "The above code will display the following results:"
+      },
+      {
+        "type": "code",
+        "text": "Apple\nApple"
+      },
+      {
+        "type": "heading",
+        "text": "Learning Objective 3: Overriding a value",
+        "style": { "fontSize": 22, "color": "#1E3A8A", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Overriding a value means assigning a new value to a variable, which replaces the old value."
+      },
+      {
+        "type": "heading",
+        "text": "Practical example",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "list",
+        "items": [
+          "Basket contains Apple.",
+          "You place Banana into the same basket.",
+          "Then the Apple will be removed.",
+          "And the basket will now contain Banana."
+        ]
+      },
+      {
+        "type": "override_variable_demo",
+        "text": "Click a fruit to store it. Click another fruit to override the value."
+      },
+      {
+        "type": "paragraph",
+        "text": "🧠 Note: When you override, only one value exists at a time."
+      },
+      {
+        "type": "heading",
+        "text": "Example 4",
+        "style": { "fontSize": 20, "color": "#2563EB", "bold": true }
+      },
+      {
+        "type": "paragraph",
+        "text": "Copying a value from one variable to another and then displaying both"
+      },
+      {
+        "type": "paragraph",
+        "text": "Answer:"
+      },
+      {
+        "type": "code",
+        "text": "DECLARE fruit AS STRING\n\nSET fruit TO \"Apple\"\nSET fruit TO \"Banana\"\n\nDISPLAY fruit"
+      },
+      {
+        "type": "paragraph",
+        "text": "The above code will display the following results:"
+      },
+      {
+        "type": "code",
+        "text": "Banana"
       },
       {
         "type": "challenge",
         "id": "variables_challenge_1",
-        "title": "Challenge 1",
+        "title": "Challenge 1: Storing a variable",
         "prompt": "Create a variable to store the age of the student. Choose the correct option:",
         "options": [
           "SET Age to 20",
@@ -140,6 +312,46 @@
         "correctIndex": 1,
         "successMessage": "Correct! Collect your star.",
         "failureMessage": "Oops! Try again... you can do this!",
+        "showStarButton": true,
+        "starLabel": "Collect your star",
+        "retryLabel": "Return to challenge",
+        "unlockTarget": "variables_challenge_3",
+        "unlockLabel": "Unlock Challenge 3"
+      },
+      {
+        "type": "challenge",
+        "id": "variables_challenge_3",
+        "lockId": "variables_challenge_3",
+        "title": "Challenge 3",
+        "prompt": "A variable A contains the value 10. You want variable B to have the same value. Choose the correct option:",
+        "options": [
+          "SET A TO B",
+          "SET B TO A",
+          "DECLARE B TO A"
+        ],
+        "correctIndex": 1,
+        "successMessage": "Correct! Collect your star.",
+        "failureMessage": "Oops! Remember, we copy from A to B. Try again... you can do this!",
+        "showStarButton": true,
+        "starLabel": "Collect your star",
+        "retryLabel": "Return to challenge",
+        "unlockTarget": "variables_challenge_4",
+        "unlockLabel": "Unlock Challenge 4"
+      },
+      {
+        "type": "challenge",
+        "id": "variables_challenge_4",
+        "lockId": "variables_challenge_4",
+        "title": "Challenge 4",
+        "prompt": "A variable Score currently stores 50. You want to update it to 100. Which option is correct?",
+        "options": [
+          "DECLARE Score = 100",
+          "SET Score TO 100",
+          "COPY Score TO 100"
+        ],
+        "correctIndex": 1,
+        "successMessage": "Correct! Collect your star.",
+        "failureMessage": "Oops! Remember, SET is used to change values. Try again... you can do this!",
         "showStarButton": true,
         "starLabel": "Collect your star",
         "retryLabel": "Return to challenge"

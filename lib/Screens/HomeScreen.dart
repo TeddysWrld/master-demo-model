@@ -22,7 +22,9 @@ late OpenAIService openai;
 	String? loadError;
 	List<ContentItem> content = [];
 	List<Chapter> chapters = [];
+  List<Chapter> sourceChapters = [];
 	int? selectedChapterIndex;
+  final Set<String> collectedStarIds = <String>{};
   String selectedLanguage = 'English';
   String selectedLanguageCode = 'en'; // New variable for language code
   
@@ -43,11 +45,14 @@ late OpenAIService openai;
 	void initState() {
 		super.initState();
 		loadJsonContent();
-    // loadContentFirebase();
     final apiKey = OPEN_AI_KEY;
     openai = OpenAIService(apiKey);
-    // addAllChaptersFromJsonAsset('lib/Api/data/chapter1content.json');
-    // createSampleChapter(); //check
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    loadJsonContent();
   }
 
 	void createSampleChapter() async {
@@ -81,19 +86,28 @@ void fetchAndPrintChapters() async {
 					if (decoded is Map<String, dynamic>) {
 						final chapter = Chapter.fromJson(decoded);
 						setState(() {
+              sourceChapters = [chapter];
+              chapters = [chapter];
 							content = chapter.content;
+              selectedChapterIndex = 0;
 							loading = false;
 						});
 					} else if (decoded is List) {
+            final parsedChapters =
+                decoded.map<Chapter>((e) => Chapter.fromJson(e as Map<String, dynamic>)).toList();
 						// Map list entries to Chapter objects
 							setState(() {
-								chapters = decoded.map<Chapter>((e) => Chapter.fromJson(e as Map<String, dynamic>)).toList();
+								sourceChapters = parsedChapters;
+								chapters = parsedChapters;
 								// also flatten first chapter into content for backward compatibility
 								content = chapters.isNotEmpty ? chapters.first.content : [];
 								// default select the first chapter
 								selectedChapterIndex = chapters.isNotEmpty ? 0 : null;
 								loading = false;
 							});
+              if (selectedLanguage != 'English') {
+                await onLanguageSelected(selectedLanguage);
+              }
 					} else {
 						throw FormatException('Unexpected JSON root type');
 					}
@@ -125,15 +139,26 @@ void fetchAndPrintChapters() async {
 		}
 	}
 
-  void onLanguageSelected(String? lang) async {
+  Future<void> onLanguageSelected(String? lang) async {
     if (lang != null) {
       setState(() {
         selectedLanguage = lang;
         selectedLanguageCode = languageCodes[lang] ?? 'en'; // Update language code
         loading = true;
       });
+
+      if (lang == 'English') {
+        setState(() {
+          chapters = sourceChapters;
+          content = chapters.isNotEmpty ? chapters.first.content : [];
+          selectedChapterIndex = chapters.isNotEmpty ? 0 : null;
+          loading = false;
+        });
+        return;
+      }
+
       print('Selected language: $lang (Code: ${languageCodes[lang]})');
-      final translated = await openai.translateJsonNested(chapters, lang);
+      final translated = await openai.translateJsonNested(sourceChapters, lang);
       setState(() {
         chapters = (translated as List).map<Chapter>((e) => Chapter.fromJson(e)).toList();
         content = chapters.isNotEmpty ? chapters.first.content : [];
@@ -141,6 +166,16 @@ void fetchAndPrintChapters() async {
         loading = false;
       });
     }
+  }
+
+  void onStarCollected(String starId) {
+    if (collectedStarIds.contains(starId)) {
+      return;
+    }
+
+    setState(() {
+      collectedStarIds.add(starId);
+    });
   }
 
 	@override
@@ -156,9 +191,44 @@ void fetchAndPrintChapters() async {
 		}
 
 		return Scaffold(
+			backgroundColor: const Color(0xFFF5F7FA),
 			appBar: AppBar(
 				title: Text(widget.title),
 				actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xFFFFF4C2), Color(0xFFF7C948)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(999),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 8,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.star_rounded, color: Color(0xFF7C4D00), size: 20),
+                const SizedBox(width: 6),
+                Text(
+                  '${collectedStarIds.length}',
+                  style: const TextStyle(
+                    color: Color(0xFF5D3A00),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ],
+            ),
+          ),
           DropdownButtonHideUnderline(
             child: Container(
               decoration: BoxDecoration(
@@ -198,27 +268,27 @@ void fetchAndPrintChapters() async {
 			if (selectedChapterIndex != null && selectedChapterIndex! >= 0 && selectedChapterIndex! < chapters.length) {
 				final chap = chapters[selectedChapterIndex!];
 				return SingleChildScrollView(
-					padding: const EdgeInsets.all(8),
+					padding: const EdgeInsets.fromLTRB(12, 16, 12, 32),
 					child: Column(
 						crossAxisAlignment: CrossAxisAlignment.start,
 						children: [
 							Padding(
 								padding: const EdgeInsets.symmetric(vertical: 12),
-								child: Row(
-									children: [
-										Expanded(child: Text(chap.chapter, style: Theme.of(context).textTheme.headlineSmall)),
-										ElevatedButton(
-											style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white),
-											onPressed: () {
-                        openai.speakText("Hello, this is a test of text to speech in $selectedLanguage", selectedLanguageCode);
-												// Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MiniIDE()));
-											},
-											child: Text('Open Environment'),
-										),
-									],
+								child: Text(
+									chap.chapter,
+									style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+										fontWeight: FontWeight.w700,
+										color: const Color(0xFF1E3A8A),
+										letterSpacing: 0.2,
+									),
 								),
 							),
-							ContentPage(content: chap.content, languageCode: selectedLanguageCode),
+							ContentPage(
+                content: chap.content,
+                languageCode: selectedLanguageCode,
+                collectedStarIds: collectedStarIds,
+                onStarCollected: onStarCollected,
+              ),
 						],
 					),
 				);
@@ -226,21 +296,38 @@ void fetchAndPrintChapters() async {
 				// Default: show the first chapter
 				final chap = chapters.first;
 				return SingleChildScrollView(
-					padding: const EdgeInsets.all(8),
+					padding: const EdgeInsets.fromLTRB(12, 16, 12, 32),
 					child: Column(
 						crossAxisAlignment: CrossAxisAlignment.start,
 						children: [
 							Padding(
 								padding: const EdgeInsets.symmetric(vertical: 12),
-								child: Text(chap.chapter, style: Theme.of(context).textTheme.headlineSmall),
+								child: Text(
+									chap.chapter,
+									style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+										fontWeight: FontWeight.w700,
+										color: const Color(0xFF1E3A8A),
+										letterSpacing: 0.2,
+									),
+								),
 							),
-							ContentPage(content: chap.content, languageCode: selectedLanguageCode),
+							ContentPage(
+                content: chap.content,
+                languageCode: selectedLanguageCode,
+                collectedStarIds: collectedStarIds,
+                onStarCollected: onStarCollected,
+              ),
 						],
 					),
 				);
 			}
 		} else {
-			return ContentPage(content: content, languageCode: selectedLanguageCode);
+			return ContentPage(
+        content: content,
+        languageCode: selectedLanguageCode,
+        collectedStarIds: collectedStarIds,
+        onStarCollected: onStarCollected,
+      );
 		}
 	}
 
